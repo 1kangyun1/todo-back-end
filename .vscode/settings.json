@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/6451f2af-0f8b-40d2-9e1e-013ea06135ff/resourceGroups/Brian-Todo-Api/providers/Microsoft.Web/sites/Brian-Todo-Api",
+  "appService.deploySubpath": "."
+}

@@ -3,6 +3,14 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  client.query('SELECT * FROM todos', (err, res) => {
+    if (err){
+      throw err;
+    }
+    for (let row of res.rows) {
+      console.log(JSON.stringify(row));
+    }
+  })
   res.json([
     {
       "id": 1,

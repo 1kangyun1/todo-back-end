@@ -3,6 +3,18 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  //database access
+  const { Client } = require('pg');
+
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
+
+  client.connect();
+
   client.query('SELECT * FROM todos', (err, res) => {
     if (err){
       throw err;
@@ -11,6 +23,8 @@ router.get('/', function(req, res, next) {
       console.log(JSON.stringify(row));
     }
   })
+  client.end();
+
   res.json([
     {
       "id": 1,

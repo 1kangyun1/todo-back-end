@@ -10,15 +10,6 @@ var todoListRouter = require('./routes/todoList');
 var delTodoRouter = require('./routes/delTodo');
 var createTodoRouter = require('./routes/createTodo');
 
-//database access
-const { Client } = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
 
 var app = express();
 

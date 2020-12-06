@@ -1,6 +1,7 @@
 var express = require('express');
 const { Pool } = require('pg');
-const { uuidv4 } = require('uuidv4');
+
+import {v4 as uuidv4} from 'uuid';
 
 var router = express.Router();
 

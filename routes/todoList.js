@@ -3,8 +3,7 @@ const { Pool } = require('pg');
 
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', async (req, res) => {
+router.get('/', async(req, res) => {
   try {
     const pool = new Pool({
       connectionString: process.env.DATABASE_URL,

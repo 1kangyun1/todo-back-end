@@ -4,9 +4,7 @@ const { uuid } = require('uuidv4');
 
 var router = express.Router();
 
-router.post('/', function(req, res, next) {
-  res.send(req.body.title + " is created");
-
+router.post('/', async(req, res) => {
   try {
     const pool = new Pool({
       connectionString: process.env.DATABASE_URL,

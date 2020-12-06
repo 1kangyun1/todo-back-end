@@ -1,12 +1,9 @@
 var express = require('express');
 const { Pool } = require('pg');
 
-
 var router = express.Router();
 
-router.delete('/:id', function(req, res, next) {
-  res.send(req.params.id + " is deleted");
-
+router.delete('/:id',  async(req, res) => {
   try {
     const pool = new Pool({
       connectionString: process.env.DATABASE_URL,

@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     });
 
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM todos');
+    const result = await client.query('SELECT * FROM todos;');
     res.json( result.rows );
     client.release();
   } catch (err) {

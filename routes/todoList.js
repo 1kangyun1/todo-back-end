@@ -13,7 +13,7 @@ router.get('/:id', async(req, res) => {
     });
 
     const client = await pool.connect();
-    const finished = await (await client.query('SELECT * FROM todos WHERE id = $1;', [req.params.id])).rows,finished;
+    const finished = await (await client.query('SELECT * FROM todos WHERE id = $1;', [req.params.id])).rows.finished;
     const result = await client.query('UPDATE todos SET finished = $1 WHERE id = $2 RETURNING *;', [!finished, req.params.id]);
     res.json( result.rows );
     client.release();

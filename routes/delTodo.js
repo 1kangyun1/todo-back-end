@@ -13,7 +13,7 @@ router.delete('/:id',  async(req, res) => {
     });
 
     const client = await pool.connect();
-    const result = await client.query('DELETE FROM todos WHERE id = ? RETURNING *;', [req.params.id]);
+    const result = await client.query('DELETE FROM todos WHERE id = $1 RETURNING *;', [req.params.id]);
     res.json( result.rows );
     client.release();
   } catch (err) {

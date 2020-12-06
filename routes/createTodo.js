@@ -16,7 +16,7 @@ router.post('/', async(req, res) => {
     const client = await pool.connect();
     const result = await client.query('INSERT INTO todos VALUES ($1, $2, $3) RETURNING *;', 
                                           [uuidv4(), req.body.todo, req.body.finished]);
-    res.json( result.rows );
+    res.json( result.rows[0] );
     client.release();
   } catch (err) {
     console.error(err);

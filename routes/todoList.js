@@ -16,8 +16,9 @@ router.get('/:id', async(req, res) => {
     result = await client.query('SELECT * FROM todos WHERE id = $1;', [req.params.id]);
     const check = !result.rows.finished;
 
-    //result = await client.query('UPDATE todos SET finished = $1 WHERE id = $2 RETURNING *;', [check, req.params.id]);
-    res.json( result.rows );
+    result = await client.query('UPDATE todos SET finished = $1 WHERE id = $2 RETURNING *;', [check, req.params.id]);
+    res.json( check );
+    //res.json( result.rows );
     client.release();
   } catch (err) {
     console.error(err);

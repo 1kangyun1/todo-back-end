@@ -1,6 +1,6 @@
 var express = require('express');
 const { Pool } = require('pg');
-const { uuid } = require('uuidv4');
+const { uuidv4 } = require('uuidv4');
 
 var router = express.Router();
 
@@ -15,7 +15,7 @@ router.post('/', async(req, res) => {
 
     const client = await pool.connect();
     const result = await client.query('INSERT INTO todos(id, todo, finished) VALUES ($1, $2, $3) RETURNING *;', 
-                                          [uuid.uuid(), req.body.todo, req.body.finished]);
+                                          [uuidv4(), req.body.todo, req.body.finished]);
     res.json( result.rows );
     client.release();
   } catch (err) {

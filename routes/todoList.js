@@ -3,7 +3,7 @@ const { Pool } = require('pg');
 
 var router = express.Router();
 
-router.get('/:id', async(req, res) => {
+router.post('/:id', async(req, res) => {
   try {
     const pool = new Pool({
       connectionString: process.env.DATABASE_URL,

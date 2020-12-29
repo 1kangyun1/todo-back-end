@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var helmet = require('helmet');
 
 var indexRouter = require('./routes/index');
 var todoListRouter = require('./routes/todoList');
@@ -23,6 +24,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(helmet());
 
 app.use('/', indexRouter);
 app.use('/todoList', todoListRouter);
